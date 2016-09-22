@@ -2,24 +2,18 @@
 
 # Usage
 #
-# ./0mesnap.sh
+# - Edit `$zeroNetDataDir`.
+# - Make sure there is `hub_seeding.lst` in `$zeroNetDataDir`.
+#   (a list of hub addresses, one ID per line, can be generated via zerome-crawler).
 #
-# Dependencies
+#      0mesnap.sh
 #
-# - Put [zerome-crawler.jar](https://weakish.github.io/zerome-crawler/)
-#   under environment variable $ZERONETDATADIR (default to current directory).
-#
-# - [entr](http://entrproject.org/) in $PATH
-#
-# - unix like os, e.g. Linux, BSD, and macOS.
 
 set -e
 set -u
 
-readonly zeroNetDateDir=${ZERONETDATADIR:-$(pwd)}
+readonly zeroNetDataDir=${ZERONETDATADIR:-$(pwd)}
 
-cd zeroNetDateDir
-java -jar zerome-crawler.jar --all -1 --seeding > hub_seeding.lst
-cat hub_seeding.lst | sed -r 's/$/\/\*/' | tr '\n' ' ' > hub_seeding.pattern
-source hub_seeding.pattern |
-entr sh -c 'cat hub_seeding.lst | xargs git add && git commit -m "Auto commit."'
+cd zeroNetDataDir
+cat hub_seeding.lst | xargs git add
+git commit -m "Auto commit."

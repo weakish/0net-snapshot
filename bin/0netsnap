@@ -1,6 +1,9 @@
 #!/bin/sh
 
-your_zeronet_folder="/pool/src/ZeroNet/data"
+set -e
+set -u
+
+your_zeronet_folder=$ZERONETDATADIR
 
 cd $your_zeronet_folder
 # This assumes git operations (blocking) are fast.

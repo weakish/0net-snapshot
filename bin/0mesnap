@@ -15,5 +15,5 @@ set -u
 readonly zeroNetDataDir=${ZERONETDATADIR:-/pool/src/ZeroNet/data}
 
 cd $zeroNetDataDir
-cat hub_seeding.lst | xargs git add
+cat hub_seeding.lst | xargs git add --all
 git commit -m "Auto commit."

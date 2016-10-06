@@ -9,7 +9,6 @@
 #      0netsnap.sh
 #
 
-set -e
 set -u
 
 readonly zeroNetDataDir=${ZERONETDATADIR:-/pool/src/ZeroNet/data}

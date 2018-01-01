@@ -1,4 +1,4 @@
-sh scripts to take snapshots of ZeroNet sites
+sh scripts to take snapshots of ZeroNet sites via git.
 
 ## Install
 
@@ -34,11 +34,14 @@ You can edit a crontab to take a snapshot, say, per hour:
 @hourly /usr/local/bin/0mesnap
 ```
 
+`$ZERONETDATADIR` is also the root directory of the git repository.
+
 ### 0netsnap
 
 Similar to 0mesnap.
 Unlike 0mesnap (track hubs in one repository),
-0netsnap uses a separate git repository per zeronet site.
+0netsnap uses a separate git repository per zeronet site,
+i.e. the zeronet site directory will be the root directory of the git repository.
 
 Specify zeronet data directory in `$ZERONETDATADIR` environment variable.
 Make sure there is `tracking_zite.lst` file in `$ZERONETDATADIR`.
